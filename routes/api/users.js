@@ -78,7 +78,7 @@ router.post('/login', (req, res) => {
 					identity: user.identity
 				}
 				// 规则 key/secret 过期时间（3600s） 回调(过期的回调)
-				jwt.sign(rule, keys.secretOrKey, {expiresIn: 3600 }, (err, token) => {
+				jwt.sign(rule, keys.secretOrKey, {expiresIn: 10 }, (err, token) => {
 					  if (err) throw err
 
 			          res.json({

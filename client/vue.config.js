@@ -44,7 +44,7 @@ module.exports = {
         hotOnly: false,
         proxy: { // 配置跨域
             '/api': {
-                target: 'http://172.27.35.3:5000/api/',
+                target: 'http://172.27.35.3:5002/api/',
                 ws: true,
                 changOrigin: true,
                 pathRewrite: {
