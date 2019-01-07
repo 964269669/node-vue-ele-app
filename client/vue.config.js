@@ -38,13 +38,13 @@ module.exports = {
     },
     devServer: {
         open: true,
-        host: '172.24.231.3',
+        host: '172.27.35.3',
         port: 8080,
         https: false,
         hotOnly: false,
         proxy: { // 配置跨域
             '/api': {
-                target: 'http://172.24.231.3:5003/api/',
+                target: 'http://172.27.35.3:5000/api/',
                 ws: true,
                 changOrigin: true,
                 pathRewrite: {
