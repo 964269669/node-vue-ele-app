@@ -185,6 +185,7 @@ export default {
     this.getProfile();
   },
   methods: {
+    // 获取数据列表
     getProfile() {
       // 获取表格数据
       this.$axios("/api/profiles").then(res => {
