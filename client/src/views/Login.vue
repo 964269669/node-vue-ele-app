@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import jwt_decode from 'jwt-decode'
 export default {
   name: 'login',
   components: {},
@@ -64,7 +65,15 @@ export default {
                 console.log('log success', res)
                 // 登陆成功拿到token
                 const { token } = res.data
+                // 存储token都localStorage
                 localStorage.setItem('eleToken', token)
+                // 解析token  解析出来是对象 包含用户信息及token的过期时间
+                const decoded = jwt_decode(token)
+                console.log('解析token', decoded)
+                // token 存储到vuex中
+                this.$store.dispatch('setAuthenticated', !this.isEmpty(decoded))
+                this.$store.dispatch('setUser', decoded)
+
                 this.$router.push('/index')
             })
             .catch(err => {
@@ -72,6 +81,13 @@ export default {
             })
           }
         })
+      },
+      isEmpty(value) {
+          return (
+              value === undefined || value === null ||
+              (typeof value === 'object' && Object.keys(value).length === 0) ||
+              (typeof value === 'string' && value.trim().length === 0)
+          )
       }
   }
 };
